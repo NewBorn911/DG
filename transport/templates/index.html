@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Главная</h1>
+
+<form action="" method="GET">
+    <select name="ml">
+        <!--{% for model in models %}-->
+        <!--<option value="{{ model.name }}">{{ model.name }}</option>-->
+        <!--{% endfor %}-->
+        <option value="">ALL</option>
+        <option value="БЕЛАЗ">БЕЛАЗ</option>
+        <option value="Komatsu">Komatsu</option>
+    </select>
+    <input type="submit">
+</form>
+
+
+<table>
+    <tr>
+        <th>Бортовой номер </th>
+        <th>Модель</th>
+        <th>Макс. грузоподъемность</th>
+        <th>Текуший вес</th>
+        <th>Перегруз %</th>
+    </tr>
+    {% for trak in traks %}
+    <tr>
+        <td>{{ trak.number }}</td>
+        <td>{{ trak.model.name }}</td>
+        <td>{{ trak.model.tonnage }}</td>
+        <td>{{ trak.loaded }}</td>
+        <td>{{ trak.percent|floatformat:2 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

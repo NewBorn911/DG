@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Транспорт</title>
+    </head>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <body>
+    <div>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'models' %}">Модели</a>
+        <a href="{% url 'trucks' %}">Самосвалы</a>
+    </div>
+    {% block content %}{% endblock content %}
+    </body>
+</html>

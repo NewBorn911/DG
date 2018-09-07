@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Самосвалы</h1>
+<table>
+    <tr>
+        <th>Бортовой номер </th>
+        <th>Модель</th>
+        <th>Загрузка</th>
+    </tr>
+    {% for trak in trucks %}
+    <tr>
+        <td>{{ trak.number }}</td>
+        <td>{{ trak.model.name }}</td>
+        <td>{{ trak.loaded }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<form action="trucks" method="POST">
+    {% csrf_token %}
+    <input type="text" name="number" maxlength="100">
+    <select name="model_id">
+        {% for model in models %}
+        <option value="{{ model.id }}">{{ model.name }} ({{ model.tonnage }})</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="loaded">
+    <input type="submit">
+</form>
+{% endblock content %}
